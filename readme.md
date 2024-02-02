@@ -1,1 +1,1 @@
-This repo is for cohort 2 class
+week 02
