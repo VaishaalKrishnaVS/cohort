@@ -1,0 +1,14 @@
+<html>
+    <script>
+        function calculateVal(){
+            const element = document.getElementById('finalSum')
+            element.innerHTML = parseInt(document.getElementById('fn').value) + parseInt(document.getElementById('sn').value)
+        }
+    </script>
+    <body>
+        <input id="fn" type="text" placeholder="first number"><br><br>
+        <input id="sn" type="text" placeholder="second number"><br><br>
+        <button onclick="calculateVal()">Calculate sum</button><br>
+        <div id="finalSum"></div>
+    </body>
+</html>

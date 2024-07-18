@@ -1,0 +1,36 @@
+<html>
+    <script>
+        function calculateVal(){
+            const element = document.getElementById('finalSum')
+            const a = document.getElementById('fn').value
+            const b = document.getElementById('sn').value
+
+            fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+            .then(function(response){
+                response.text()
+                .then(function (ans) {
+                    element.innerHTML = ans;
+                })
+            })
+        }
+        async function calculateValAsync(){
+            const element = document.getElementById('finalSum1')
+            const a = document.getElementById('fn').value
+            const b = document.getElementById('sn').value
+
+            const response = await fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+            const ans  = await response.text()
+            element.innerHTML = ans
+        }
+    </script>
+    <body>
+        <input id="fn" type="text" placeholder="first number"><br><br>
+        <input id="sn" type="text" placeholder="second number"><br><br>
+        <button onclick="calculateVal()">Calculate sum</button><br><br>
+        <button onclick="calculateValAsync()">Calculate sum</button><br><br>
+
+        <div id="finalSum"></div>
+        <div id="finalSum1"></div>
+
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<script>
+    let timeout;
+
+    function debounce() {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            calculateVal();
+        }, 1000);
+    }
+
+    function calculateVal() {
+        const element = document.getElementById("finalSum");
+        const a = document.getElementById("fn").value;
+        const b = document.getElementById("sn").value;
+
+        fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b).then(
+            function (response) {
+                response.text().then(function (ans) {
+                    element.innerHTML = ans;
+                });
+            }
+        );
+    }
+</script>
+
+<body>
+    <input oninput="debounce()" id="fn" type="text" placeholder="first number" /><br /><br />
+    <input oninput="debounce()" id="sn" type="text" placeholder="second number" /><br /><br />
+    <div id="finalSum"></div>
+</body>
+
+</html>
