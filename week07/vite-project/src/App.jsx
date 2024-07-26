@@ -1,38 +1,12 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { Dashboard } from "./components/Dashboard";
-import { Landing } from "./components/Landing";
+import AddTodo from "./components/AddTodo";
+import Todos from "./components/Todos";
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <AppBar />
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </BrowserRouter>
+      <AddTodo />
+      <Todos />
     </div>
   );
 }
 
-function AppBar() {
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate("/");
-  }
-  return (
-    <div>
-      <div>
-        <button
-          onClick={() => {
-            window.location.href = "/dashboard";
-          }}
-        >
-          dashboard
-        </button>
-        <button onClick={handleClick}>Landing</button>
-      </div>
-    </div>
-  );
-}
 export default App;
