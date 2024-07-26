@@ -1,38 +1,29 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { Dashboard } from "./components/Dashboard";
-import { Landing } from "./components/Landing";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import { notification, totalNotificationSelector } from "./store/atoms";
+
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <AppBar />
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <RecoilRoot>
+        <Home />
+      </RecoilRoot>
+    </>
   );
 }
 
-function AppBar() {
-  const navigate = useNavigate();
-  function handleClick() {
-    navigate("/");
-  }
+function Home() {
+  const [network, setNetwork] = useRecoilState(notification);
+  const totalNotification = useRecoilValue(totalNotificationSelector);
   return (
-    <div>
-      <div>
-        <button
-          onClick={() => {
-            window.location.href = "/dashboard";
-          }}
-        >
-          dashboard
-        </button>
-        <button onClick={handleClick}>Landing</button>
-      </div>
-    </div>
+    <>
+      <button>home</button>
+      <button>My network ({network.notifications})</button>
+      <button>jobs () </button>
+      <button>network ()</button>
+      <button>notification () </button>
+      <button>me {totalNotification}</button>
+    </>
   );
 }
+
 export default App;
